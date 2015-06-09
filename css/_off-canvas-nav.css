@@ -1,0 +1,88 @@
+/* Use the following HTML structure:
+  <body>
+    <input type="checkbox" id="nav-toggle">
+    <header>
+      <label for="nav-toggle" class="menu-toggle">MENU</label>
+      <nav class="navigation">
+        <ul>
+          <li><a href="#">Navigation items here</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="page">
+      <p>Entire page content here</p>
+    </div>
+  </body>
+*/
+
+header {
+  position: fixed;
+  width: 100%;
+  height: 4rem;
+  z-index: 10;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+#page, .navigation {
+  position: relative;
+  top: 4rem; /* offsets header height */
+  transition: right 0.3s ease;
+}
+#nav-toggle {
+  display: none;
+}
+.menu-toggle {
+  float: right;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+/* hamburger icon */
+.menu-toggle::after {
+  content: ' ☰';
+}
+#page, #nav-toggle:checked + header .navigation {
+  right: 0;
+}
+#nav-toggle:checked ~ #page {
+  right: 75%;
+}
+.navigation {
+  position: fixed;
+  right: -75%;
+  width: 75%;
+  height: 100%;
+  background: #333;
+  overflow-y: scroll;
+}
+/* off-canvas shadow */
+.navigation::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient( to left, transparent, rgba(0, 0, 0, 0.3) );
+}
+.navigation li {
+  list-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.navigation a {
+  display: block;
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+}
+.navigation a:hover,
+.navigation a:focus {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: #666;
+}

@@ -1,0 +1,19 @@
+@import "_base.css";
+@import "_off-canvas-nav.css";
+
+body {
+  position: relative;
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 60rem; /* 960px */
+}
+
+#page {
+  padding: 2rem;
+  text-align: center;
+  color: #333;
+}
