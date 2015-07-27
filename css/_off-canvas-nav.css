@@ -15,6 +15,11 @@
   </body>
 */
 
+
+/* --- fixed header and menu toggle --- */
+#nav-toggle {
+  display: none;
+}
 header {
   position: fixed;
   width: 100%;
@@ -22,14 +27,6 @@ header {
   z-index: 10;
   color: #fff;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-}
-#page, .navigation {
-  position: relative;
-  top: 4rem; /* offsets header height */
-  transition: right 0.3s ease;
-}
-#nav-toggle {
-  display: none;
 }
 .menu-toggle {
   float: right;
@@ -39,20 +36,36 @@ header {
   cursor: pointer;
   color: #333;
 }
-/* hamburger icon */
 .menu-toggle::after {
   content: ' ☰';
 }
-#page, #nav-toggle:checked + header .navigation {
-  right: 0;
+
+
+/* --- mobile menu displayed --- */
+#nav-toggle:checked + header .navigation {
+  transform: translate(4rem, 0);
 }
 #nav-toggle:checked ~ #page {
-  right: 75%;
+  transform: translate(calc(-100% + 4rem), 0);
 }
+
+
+/* --- default page position --- */
+#page {
+  position: relative;
+  top: 4rem;
+  transform: translate(0, 0);
+  transition: transform 0.3s ease;
+}
+
+
+/* --- default sidebar navigation --- */
 .navigation {
   position: fixed;
-  right: -75%;
-  width: 75%;
+  top: 4rem;
+  transform: translate(calc(100% + 4rem), 0);
+  transition: transform 0.3s ease;
+  width: calc(100% - 4rem);
   height: 100%;
   background: #333;
   overflow-y: scroll;
@@ -66,6 +79,7 @@ header {
   width: 3px;
   background: linear-gradient( to left, transparent, rgba(0, 0, 0, 0.3) );
 }
+/* navigation items */
 .navigation li {
   list-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
