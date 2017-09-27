@@ -1,4 +1,4 @@
 # OCN
 Simple CSS Off-Canvas Navigation.
 
-[Live Demo](http://myerscourtney.github.io/OCN/).
+[Live Demo](http://courtneymyers.github.io/OCN/).
